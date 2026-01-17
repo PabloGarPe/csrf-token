@@ -1,7 +1,7 @@
 import { MAX_USES } from "./constants";
 import { InvalidTokenError } from "./errors/invalid-token.error";
 import { MaxUsesError } from "./errors/max-uses.error";
-import { CSRFToken } from "./interfaces/csrf-token.interface";
+import { CSRFToken, CSRFTokenPayload } from "./interfaces/csrf-token.interface";
 
 export class CSRFTokenImplemention implements CSRFToken{
     readonly tokenID: string;
@@ -27,6 +27,17 @@ export class CSRFTokenImplemention implements CSRFToken{
 
     isTokenValid():boolean{
         return (this.expirationDate.getTime() - new Date().getTime()) > 0;
+    }
+
+    convertToken(): string {
+        const payload: CSRFTokenPayload = {
+            tokenID: this.tokenID,
+            releaseDate: this.releaseDate,
+            expirationDate: this.expirationDate,
+            numUses: this.numUses
+        }
+
+        return Buffer.from(JSON.stringify(payload)).toString("base64url");
     }
     
 }

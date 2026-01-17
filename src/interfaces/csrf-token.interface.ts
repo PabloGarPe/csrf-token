@@ -4,7 +4,8 @@ export interface CSRFToken {
     expirationDate: Date,
     readonly numUses:number,
     setNumUses(arg1:number):void,
-    isTokenValid():boolean
+    isTokenValid():boolean,
+    convertToken():string;
 }
 
 export type CSRFTokenPayload = {

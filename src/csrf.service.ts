@@ -88,4 +88,10 @@ export class CsrfService {
             payload.numUses.valueOf());
     }
 
+    useToken(token:string):string{
+        let csrf = this.decodeToken(token);
+        csrf.setNumUses(csrf.numUses + 1);
+        return csrf.convertToken();
+    }
+
 }
