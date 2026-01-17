@@ -1,0 +1,36 @@
+{
+  "name": "csrf",
+  "version": "1.0.0",
+  "description": "A simple csrf-token library for nestjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test --import tsx src/csrf.service.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloGarPe/csrf-token.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PabloGarPe/csrf-token/issues"
+  },
+  "homepage": "https://github.com/PabloGarPe/csrf-token#readme",
+  "dependencies": {
+    "@nestjs/common": "11.1.12",
+    "@nestjs/core": "11.1.12",
+    "cookie-parser": "1.4.7",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "11.1.12",
+    "@types/node": "25.0.9",
+    "jest": "^30.2.0",
+    "ts-jest": "29.4.6",
+    "tsx": "^4.21.0",
+    "typescript": "5.9.3"
+  }
+}
