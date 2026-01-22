@@ -23,7 +23,7 @@ export class CsrfGuard implements CanActivate {
         const cookieName = this.options.cookieName || CSRF_DEFAULT_COOKIE_NAME;
         const headerName = this.options.headerName || CSRF_DEFAULT_HEADER_NAME;
 
-        const cookieToken = request.cookies?.cookieName
+        const cookieToken = request.cookies?.[cookieName]
         const headerToken = request.headers[headerName.toLowerCase()]
 
         if(!cookieToken && !headerToken){
@@ -61,7 +61,7 @@ export class CsrfGuard implements CanActivate {
         })
     }
 
-    private sendCookie(token:string,response:any,cookieName){
+    private sendCookie(token:string,response:any,cookieName:string){
         response.cookie(cookieName,token,{
                 httpOnly:false,
                 secure: this.options.cookieOptions?.secure ?? CSRF_DEFAULT_SECURE,
